@@ -28,6 +28,20 @@ function createApp({ albumsService, reviewsService } = {}) {
   }
 
   if (reviewsService) {
+
+    app.post("/reviews", express.json(), (req, res, next) => {
+      try {
+        const created = reviewsService.createReview(req.body);
+        if (created) {
+          res.status(201).json({ message: "Review created successfully" });
+        } else {
+          res.status(500).json({ error: "Failed to create review" });
+        }
+      } catch (error) {
+        next(error);
+      }
+    });
+
     app.get("/reviews/:id", (req, res, next) => {
       try {
         res.status(200).json(reviewsService.getReviewById(req.params.id));

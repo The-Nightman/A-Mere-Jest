@@ -3,6 +3,18 @@ class ReviewsRepository {
     this.db = db;
   }
 
+  create(review) {
+    const result = this.db
+      .prepare(
+        `
+      INSERT INTO reviews (album_id, user_id, rating, comment)
+      VALUES (?, ?, ?, ?)
+    `,
+      )
+      .run(review.album_id, review.user_id, review.rating, review.comment);
+    return result.changes > 0;
+  }
+
   findById(id) {
     return this.db
       .prepare(
