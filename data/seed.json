@@ -1,0 +1,74 @@
+{
+  "artists": [
+    {
+      "name": "Alice In Chains"
+    },
+    {
+      "name": "Nirvana"
+    },
+    {
+      "name": "The Cult"
+    }
+  ],
+  "albums": [
+    {
+      "title": "Dirt (2022 Remaster)",
+      "artist": "Alice In Chains"
+    },
+    {
+      "title": "Nevermind (Remastered)",
+      "artist": "Nirvana"
+    },
+    {
+      "title": "Love (Remastered)",
+      "artist": "The Cult"
+    }
+  ],
+  "reviews": [
+    {
+      "album": "Dirt (2022 Remaster)",
+      "rating": 5,
+      "comment": "A great album."
+    },
+    {
+      "album": "Dirt (2022 Remaster)",
+      "rating": 4,
+      "comment": "A solid album."
+    },
+    {
+      "album": "Dirt (2022 Remaster)",
+      "rating": 1,
+      "comment": "A terrible album."
+    },
+    {
+      "album": "Nevermind (Remastered)",
+      "rating": 5,
+      "comment": "A great album."
+    },
+    {
+      "album": "Nevermind (Remastered)",
+      "rating": 4,
+      "comment": "A solid album."
+    },
+    {
+      "album": "Nevermind (Remastered)",
+      "rating": 1,
+      "comment": "A terrible album."
+    },
+    {
+      "album": "Love (Remastered)",
+      "rating": 5,
+      "comment": "A great album."
+    },
+    {
+      "album": "Love (Remastered)",
+      "rating": 4,
+      "comment": "A solid album."
+    },
+    {
+      "album": "Love (Remastered)",
+      "rating": 1,
+      "comment": "A terrible album."
+    }
+  ]
+}
