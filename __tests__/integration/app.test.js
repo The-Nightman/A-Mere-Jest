@@ -20,7 +20,7 @@ describe("API integration", () => {
     const reviewsRepository = new ReviewsRepository(db);
 
     app = createApp({
-      albumsService: new AlbumsService(albumRepository),
+      albumsService: new AlbumsService(albumRepository, reviewsRepository),
       reviewsService: new ReviewsService(reviewsRepository),
     });
   });
@@ -62,6 +62,29 @@ describe("API integration", () => {
         id: 1,
         title: "Dirt (2022 Remaster)",
         average_rating: 3.3,
+        reviews: [
+          {
+            id: 1,
+            user_id: 1,
+            rating: 5,
+            comment: "A great album.",
+            user_name: "user1",
+          },
+          {
+            id: 2,
+            user_id: 2,
+            rating: 4,
+            comment: "A solid album.",
+            user_name: "user2",
+          },
+          {
+            id: 3,
+            user_id: 3,
+            rating: 1,
+            comment: "A terrible album.",
+            user_name: "user3",
+          },
+        ],
       });
     });
 

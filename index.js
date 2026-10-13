@@ -18,7 +18,7 @@ if (ENV === "development") {
 
 const albumRepository = new AlbumRepository(db);
 const reviewsRepository = new ReviewsRepository(db);
-const albumsService = new AlbumsService(albumRepository);
+const albumsService = new AlbumsService(albumRepository, reviewsRepository);
 const reviewsService = new ReviewsService(reviewsRepository);
 
 const app = createApp({ albumsService, reviewsService });

@@ -29,6 +29,16 @@ class ReviewsService {
     return review;
   }
 
+  getReviewsByAlbumId(albumId) {
+    const reviews = this.reviewsRepository.findByAlbumId(albumId);
+    if (!reviews) {
+      const error = new Error(`Reviews for album with id ${albumId} were not found`);
+      error.statusCode = 404;
+      throw error;
+    }
+    return reviews;
+  }
+
   deleteReviewById(id) {
     const deleted = this.reviewsRepository.deleteById(id);
 

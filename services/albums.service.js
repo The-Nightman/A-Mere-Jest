@@ -1,6 +1,7 @@
 class AlbumsService {
-  constructor(albumRepository) {
+  constructor(albumRepository, reviewsRepository) {
     this.albumRepository = albumRepository;
+    this.reviewsRepository = reviewsRepository;
   }
 
   getAlbums() {
@@ -9,6 +10,7 @@ class AlbumsService {
 
   getAlbumById(id) {
     const album = this.albumRepository.findById(id);
+    const reviews = this.reviewsRepository.findByAlbumId(id);
 
     if (!album) {
       const error = new Error(`Album with id ${id} was not found`);
@@ -16,7 +18,7 @@ class AlbumsService {
       throw error;
     }
 
-    return album;
+    return { ...album, reviews: reviews || [] };
   }
 }
 

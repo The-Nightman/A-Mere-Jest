@@ -41,6 +41,25 @@ class ReviewsRepository {
       .get(id);
   }
 
+  findByAlbumId(albumId) {
+    return this.db
+      .prepare(
+        `
+      SELECT
+        r.id,
+        r.user_id,
+        r.rating,
+        r.comment,
+        u.name AS user_name
+      FROM reviews AS r
+      JOIN users AS u
+        ON r.user_id = u.id
+      WHERE r.album_id = ?
+    `,
+      )
+      .all(albumId);
+  }
+
   deleteById(id) {
     const result = this.db.prepare("DELETE FROM reviews WHERE id = ?").run(id);
     return result.changes > 0;
