@@ -55,6 +55,9 @@ function createDatabase(
       album_id INTEGER NOT NULL,
       rating INTEGER NOT NULL,
       comment TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      user_id INTEGER NOT NULL,
+      FOREIGN KEY (user_id) REFERENCES users(id),
       FOREIGN KEY (album_id) REFERENCES albums(id)
     );
   `);

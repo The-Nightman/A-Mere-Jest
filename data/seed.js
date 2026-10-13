@@ -4,9 +4,13 @@ const createDatabase = require("./database");
 
 function seedDatabase(db, seed) {
   const insert = db.transaction(() => {
+    const userIds = new Map();
     const artistIds = new Map();
     const albumIds = new Map();
 
+    const insertUser = db.prepare(
+      "INSERT INTO users (name) VALUES (?)",
+    );
     const insertArtist = db.prepare(
       "INSERT INTO artists (name) VALUES (?)",
     );
@@ -14,8 +18,13 @@ function seedDatabase(db, seed) {
       "INSERT INTO albums (title, artist_id) VALUES (?, ?)",
     );
     const insertReview = db.prepare(
-      "INSERT INTO reviews (album_id, rating, comment) VALUES (?, ?, ?)",
+      "INSERT INTO reviews (album_id, rating, comment, user_id) VALUES (?, ?, ?, ?)",
     );
+
+    for (const user of seed.users || []) {
+      const result = insertUser.run(user.name);
+      userIds.set(user.name, Number(result.lastInsertRowid));
+    }
 
     for (const artist of seed.artists || []) {
       const result = insertArtist.run(artist.name);
@@ -40,7 +49,13 @@ function seedDatabase(db, seed) {
         throw new Error(`Album not found for review "${review.album}"`);
       }
 
-      insertReview.run(albumId, review.rating, review.comment ?? null);
+      const userId = userIds.get(review.user);
+
+      if (!userId) {
+        throw new Error(`User not found for review "${review.user}"`);
+      }
+
+      insertReview.run(albumId, review.rating, review.comment ?? null, userId);
     }
   });
 

@@ -1,4 +1,15 @@
 {
+  "users": [
+    {
+      "name": "user1"
+    },
+    {
+      "name": "user2"
+    },
+    {
+      "name": "user3"
+    }
+  ],
   "artists": [
     {
       "name": "Alice In Chains"
@@ -28,47 +39,56 @@
     {
       "album": "Dirt (2022 Remaster)",
       "rating": 5,
-      "comment": "A great album."
+      "comment": "A great album.",
+      "user": "user1"
     },
     {
       "album": "Dirt (2022 Remaster)",
       "rating": 4,
-      "comment": "A solid album."
+      "comment": "A solid album.",
+      "user": "user2"
     },
     {
       "album": "Dirt (2022 Remaster)",
       "rating": 1,
-      "comment": "A terrible album."
+      "comment": "A terrible album.",
+      "user": "user3"
     },
     {
       "album": "Nevermind (Remastered)",
       "rating": 5,
-      "comment": "A great album."
+      "comment": "A great album.",
+      "user": "user1"
     },
     {
       "album": "Nevermind (Remastered)",
       "rating": 4,
-      "comment": "A solid album."
+      "comment": "A solid album.",
+      "user": "user2"
     },
     {
       "album": "Nevermind (Remastered)",
       "rating": 1,
-      "comment": "A terrible album."
+      "comment": "A terrible album.",
+      "user": "user3"
     },
     {
       "album": "Love (Remastered)",
       "rating": 5,
-      "comment": "A great album."
+      "comment": "A great album.",
+      "user": "user1"
     },
     {
       "album": "Love (Remastered)",
       "rating": 4,
-      "comment": "A solid album."
+      "comment": "A solid album.",
+      "user": "user2"
     },
     {
       "album": "Love (Remastered)",
       "rating": 1,
-      "comment": "A terrible album."
+      "comment": "A terrible album.",
+      "user": "user3"
     }
   ]
 }
