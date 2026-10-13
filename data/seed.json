@@ -19,6 +19,9 @@
     },
     {
       "name": "The Cult"
+    },
+    {
+      "name": "Wang Chung"
     }
   ],
   "albums": [
@@ -33,6 +36,10 @@
     {
       "title": "Love (Remastered)",
       "artist": "The Cult"
+    },
+    {
+      "title": "20th Century Masters: The Millennium Collection: The Best of Wang Chung",
+      "artist": "Wang Chung"
     }
   ],
   "reviews": [
