@@ -1,6 +1,6 @@
 const express = require("express");
 
-function createApp({ albumsService } = {}) {
+function createApp({ albumsService, reviewsService } = {}) {
   const app = express();
 
   app.get("/health", (req, res) => {
@@ -21,6 +21,29 @@ function createApp({ albumsService } = {}) {
     app.get("/albums/:id", (req, res, next) => {
       try {
         res.status(200).json(albumsService.getAlbumById(req.params.id));
+      } catch (error) {
+        next(error);
+      }
+    });
+  }
+
+  if (reviewsService) {
+    app.get("/reviews/:id", (req, res, next) => {
+      try {
+        res.status(200).json(reviewsService.getReviewById(req.params.id));
+      } catch (error) {
+        next(error);
+      }
+    });
+
+    app.delete("/reviews/:id", (req, res, next) => {
+      try {
+        const deleted = reviewsService.deleteReviewById(req.params.id);
+        if (deleted) {
+          res.status(204).send();
+        } else {
+          res.status(404).json({ error: "Review not found" });
+        }
       } catch (error) {
         next(error);
       }
