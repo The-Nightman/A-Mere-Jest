@@ -1,5 +1,6 @@
 const request = require("supertest");
-const app = require("../../app");
+const createApp = require("../../app");
+const app = createApp();
 
 describe("get /health", () => {
   test("should return HTTP Status 200 with an Ok message, current uptime and date", done => {
